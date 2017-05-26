@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import AdminDashboard from './AdminDashboard.js';
-import Login from'./Login.js';
+//import Login from'./Login.js';
 import { Switch } from 'react-router-dom'
 import { Route, Redirect } from 'react-router'
 import './StyleSheet/App.css';
 class App extends Component {
 
-  render() {
+ /* render() {
     return (
       <div className="global_container">
              <Switch>
@@ -17,7 +17,11 @@ class App extends Component {
                   <AdminDashboard/>
                 )
               )}/>
-              <Route path='/login' component={Login}/>
+              <Route path='/login' component={Login}/>*/
+              render() {
+    return (
+      <div className="global_container">
+             <Switch>
               <Route path='/' exactly component={AdminDashboard}/>
             </Switch>
           </div>

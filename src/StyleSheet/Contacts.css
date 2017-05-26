@@ -1,0 +1,30 @@
+.table_data {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+    font-family: font;
+}
+
+.all_contacts{
+
+font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.count{
+    font-size: 20px;
+    color: #735a73;
+    margin-top: 20px;
+    margin: 2% auto;
+    float: right;
+    padding-right: 30px;
+    font-family: font;
+    color: #ff3535;
+}
+
+.table_row:nth-child(even) {
+    background: rgb(214, 214, 214);
+}
