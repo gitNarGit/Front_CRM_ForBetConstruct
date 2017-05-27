@@ -33,6 +33,7 @@ font-family: arial, sans-serif;
     float: right;
     padding: 1%;
     margin-top: 1%;
+    margin-right: 2%;
     background: black;
     position: fixies;
     border-radius: 10px;
@@ -49,4 +50,8 @@ font-family: arial, sans-serif;
     display: block;
     width: 21%;
     margin: 0;
+}
+
+.buttonSend{
+    float: right;
 }

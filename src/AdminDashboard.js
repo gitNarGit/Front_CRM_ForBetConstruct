@@ -1,6 +1,6 @@
 import './StyleSheet/Dashboard.css';
 import React, { Component } from 'react';
-import {Table} from './AllContacts/Table.js'
+import {Table} from './MainTable/Table.js'
 import Header from "./Header.js"
 import Menu from "./Menu.js";
 import MailingLists from'./MailingLists/MailingLists';

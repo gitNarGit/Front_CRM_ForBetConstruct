@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import '../StyleSheet/Contacts.css';
 import { Requests } from './Requests';
 
-class Contacts extends Component {
+class TableBody extends Component {
   constructor(props) {
     super(props);
     this.state = { guId: [] };
     this.renderHeaders = this.renderHeaders.bind(this);
     this.getGuId = this.getGuId.bind(this);
     this.postData = this.postData.bind(this);
-    this.renderBody = this.renderBody.bind(this);
+
   }
 
   getGuId(e) {
@@ -47,51 +47,18 @@ class Contacts extends Component {
       </tr>
     )
   }
-  renderBody(value, key) {
+  render() {
     return (
-      <tr key={key} className="table_row">
-        <th className="table_data">Select</th>
-        <th className="table_data">{value}</th>
-      </tr>
+
+      <tbody>{this.props.database.map(this.renderHeaders)}
+        <tr>
+          <td colSpan="7">
+            <button className="email_send" onClick={this.postData} >SEND EMAIL</button>
+          </td>
+        </tr>
+      </tbody>
     )
   }
-
-  render() {
-    // getting header data
-    
-    const obj = this.props.head;
-
-    // defining rendered headers
-
-    let headers = [];
-    for (let i in obj) {
-      headers.push(i);
-    }
-    let header = headers.splice(0, 5);
-
-    // rendering headers as table heads
-
-    let head = header.map((headers, index) =>
-      <th className="table_data" key={index}>{headers}</th>);
-    return (
-      <div>
-        <h3 className="contacts_header">All Contacts</h3>
-        <p className="count">Number of Contacts: {this.props.database.length}</p>
-        <table className="all_contacts">
-          <thead>
-            <tr className="table_row">
-              <th className="table_data">Select</th>
-              <th className="table_data">ID</th>{head}
-            </tr>
-          </thead>
-          <tbody>{this.props.database.map(this.renderHeaders)}</tbody>
-        </table>
-        <button className="email_send" onClick={this.postData}>SEND EMAIL</button>
-      </div>)
-  }
 }
-export { Contacts };
-
-
-
+export { TableBody };
 
