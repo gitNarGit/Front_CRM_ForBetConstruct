@@ -29,3 +29,16 @@ font-family: arial, sans-serif;
     background: rgb(214, 214, 214);
 }
 
+.email_send{
+    float: right;
+    padding: 1%;
+    margin-top: 1%;
+    background: black;
+    position: fixies;
+    border-radius: 10px;
+    box-shadow: gray;
+    font-family: font;
+    color: white;
+    cursor: pointer;
+}
+

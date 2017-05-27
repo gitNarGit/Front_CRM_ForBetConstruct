@@ -18,7 +18,9 @@ class ajax {
                 },
                 body: JSON.stringify(data)
             })
-                .then(response => resolve(response.text(), err => reject(err)))
+                .then(response => resolve(response.text(), err => reject(err))).catch(function() {
+        console.log("error occured");
+    })
         })
     }
 }
@@ -42,33 +44,3 @@ class Table extends Component {
 
 export { Table };
 
-class CheckBox extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { checkedList: {}, isChecked: true };
-        this.getKey = this.getKey.bind(this);
-        this.getId = this.getId.bind(this);
-    }
-
-    getKey() {
-        this.setState({ isChecked: !this.state.isChecked });
-    }
-
-    getId() {
-
-        this.getKey();
-        if (this.state.isChecked) {
-            this.state.checkedList[this.props.index] = this.props.index;
-            this.setState({ checkedList: this.state.checkedList });
-            console.log(this.state.checkedList);
-        }
-        this.arr = [];
-        this.arr.push(this.state.checkedList);
-    }
-
-    render() {
-        console.log(this.arr)
-        return (<td className="table_data"><input type="checkbox" ref="checkbx" onClick={this.getId} /></td>);
-    }
-}
-export { CheckBox };
