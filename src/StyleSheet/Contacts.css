@@ -42,3 +42,11 @@ font-family: arial, sans-serif;
     cursor: pointer;
 }
 
+.contacts_header{
+    font-size: 32px;
+    font-family: font;
+    text-align: center;
+    display: block;
+    width: 21%;
+    margin: 0;
+}
