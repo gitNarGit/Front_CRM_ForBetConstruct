@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import '../StyleSheet/Contacts.css';
 import { Requests } from './Requests';
 
-
-
-
-
 class Headers extends Component {
     constructor(props) {
         super(props);
@@ -13,10 +9,9 @@ class Headers extends Component {
         this.renderHeaders=this.renderHeaders.bind(this);
 
     }
-
     getHeadersData() {
         // getting header data
-        const obj = this.props.head;
+        const obj = this.props.headerData;
         // defining rendered headers
         let headers = [];
         for (let i in obj) {

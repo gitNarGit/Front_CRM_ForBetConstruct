@@ -81,7 +81,7 @@ class EditAddList extends Component {
                 <div className="menuListWrap">
 
                     <div className="add_list">
-                        <form action="#" method="POST">
+                        <form action="#" method="">
                             <div>
                                 <input className="list_input" type="text" id="list_name" required name="listname" placeholder="Mailing List Name" />
                             </div>

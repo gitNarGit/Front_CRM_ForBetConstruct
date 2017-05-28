@@ -29,7 +29,7 @@ font-family: arial, sans-serif;
     background: rgb(214, 214, 214);
 }
 
-.email_send{
+.main_buttons{
     float: right;
     padding: 1%;
     margin-top: 1%;
@@ -43,7 +43,7 @@ font-family: arial, sans-serif;
     cursor: pointer;
 }
 
-.contacts_header{
+.headers{
     font-size: 32px;
     font-family: font;
     text-align: center;
@@ -52,6 +52,48 @@ font-family: arial, sans-serif;
     margin: 0;
 }
 
+
 .buttonSend{
     float: right;
+}
+
+.add_new_header{
+    font-size: 24px;
+    font-family: font;
+    text-align: center;
+    display: block;
+    margin: 0;
+}
+.add_new_form{
+    text-align: center;
+    z-index: -9999;
+}
+.add_new{
+    overflow: auto;
+}
+
+.list_input {
+	text-indent: 2%;
+	outline: none;
+    padding: 10px 0px;
+    font-size: 14px;
+    margin: 5px 0px;
+    border: solid 1px #735a73;
+    border-radius: 10px;
+}
+
+.list_input:focus::-webkit-input-placeholder {
+	color: transparent;
+}
+
+.list_input:focus:-moz-placeholder {
+	color: transparent;
+}
+
+.list_input:focus::-moz-placeholder {
+	color: transparent;
+}
+
+.list_input:focus:-ms-input-placeholder {
+	color: transparent;
 }
