@@ -1,9 +1,12 @@
 .table_data {
     border: 1px solid #dddddd;
-    text-align: left;
     padding: 8px;
-    text-align: center;
     font-family: font;
+}
+
+.table_head_data {
+    text-align: center;
+    
 }
 
 .all_contacts{
