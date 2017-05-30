@@ -85,10 +85,10 @@ class TableBody extends Component {
                 <td id={key} ></td>
                 <td >{value.EmailListId}</td>
                 <td ><textarea ref="newText" defaultValue={value.EmailListName}>{}</textarea></td>
-                
+
             </tr>
 
-           
+
         )
     }
 
