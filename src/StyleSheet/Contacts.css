@@ -1,6 +1,6 @@
 .table_data {
     border: 1px solid #dddddd;
-    padding: 8px;
+    padding: 4px;
     font-family: font;
 }
 
@@ -99,4 +99,34 @@ font-family: arial, sans-serif;
 
 .list_input:focus:-ms-input-placeholder {
 	color: transparent;
+}
+
+.edit_form{
+    background: #c56969;
+    width: 52%;
+    overflow: auto;
+    text-align: center;
+    margin: 11% auto;
+}
+
+.edit_mode{
+    position: fixed;
+    top: 0;
+    left: 0; 
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(224,224,224,0.07);
+}
+.edit_delete{
+        margin: 0px 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+        border: none;
+        color: white;
+        background: rgb(0, 188, 212)
+    
+}
+.del{
+    background: rgb(255, 64, 129);
+    color: white;
 }

@@ -14,6 +14,7 @@ class Table extends Component {
         this.getSendMailData = this.getSendMailData.bind(this);
         this.postData = this.postData.bind(this);
         this.changeState = this.changeState.bind(this);
+        this.putData=this.putData.bind(this);
       //  this.getAddedData = this.getAddedData.bind(this);
     }
 
@@ -25,11 +26,12 @@ class Table extends Component {
     changeState(data) {
         this.setState({ db: data })
     }
-    
-      
-       
 
+    putData(putJSON){
+            call('api/contacts', 'PUT', putJSON)
+    }
     
+
     closeMode() {
         this.setState({ AddNewMode: false })
     }
@@ -50,7 +52,7 @@ class Table extends Component {
             <p className="count">Number of Contacts: {this.state.db.length}</p>
             <table className="all_contacts">
                 <Headers headerData={this.state.db[0]}></Headers>
-                <TableBody getSendData={this.getSendMailData} database={this.state.db} head={this.state.db[0]} />
+                <TableBody getSendData={this.getSendMailData} put={this.putData} change={this.changeState} database={this.state.db} head={this.state.db[0]} />
             </table>
 
             <button className="main_buttons" onClick={this.postData}>SEND EMAIL</button>

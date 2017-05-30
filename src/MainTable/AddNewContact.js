@@ -48,13 +48,14 @@ class AddNewContact extends Component {
                 if (response.error) {
                      call('api/contacts', 'GET').then(response => { response.error ? alert(response.message) : that.props.change(response) })
                      console.log(this)
+                     that.closeMode();
                 }
                 else {
                     alert("Error Request")
                 }
             })
             if (!this.state.close) {
-                this.closeMode();
+                
                 alert("error")
             }          
         }

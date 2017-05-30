@@ -1,6 +1,4 @@
 
-
-
 export default  function call(uri, method, body = false, error_message = "Something went wrong"){
   if(body !== false && method!=="GET" && method!=="DELETE"){
     body = JSON.stringify(body);

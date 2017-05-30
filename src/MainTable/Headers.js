@@ -35,6 +35,9 @@ console.log(this.getHeadersData())
                     <th className="table_data">Select</th>
                     <th className="table_data">Number</th>
                     {this.getHeadersData().map(this.renderHeaders)}
+                    <th className="table_data">Edit</th>
+                    <th className="table_data">Delete</th>
+
                 </tr>
             </thead>
         )
