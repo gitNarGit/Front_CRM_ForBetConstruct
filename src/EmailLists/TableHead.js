@@ -25,12 +25,13 @@ class TableHead extends Component {
 
     render() {
         return (
+
+
             <thead>
                 <tr >
                     <th ></th>
                     {this.getHeadData().map(this.renderHead)}
                 </tr>
-
             </thead>
         )
     }
