@@ -45,6 +45,9 @@ font-family: arial, sans-serif;
     color: white;
     cursor: pointer;
 }
+.button_send{
+    float: left;
+}
 
 .headers{
     font-size: 32px;
@@ -129,4 +132,20 @@ font-family: arial, sans-serif;
 .del{
     background: rgb(255, 64, 129);
     color: white;
+}
+
+.upload{
+    float: left;
+    color: white;
+        background: rgb(0, 188, 212)
+}
+
+.button_send:disabled{
+    cursor: not-allowed;
+    background: white;
+    color: black;
+}
+
+.checkbox{
+    text-align: center;
 }

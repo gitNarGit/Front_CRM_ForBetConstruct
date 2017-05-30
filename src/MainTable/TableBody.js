@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import '../StyleSheet/Contacts.css';
 import call from '../helpers/call.js'
 
 class TableBody extends Component {
   constructor(props) {
     super(props);
-    this.state = { guId: [], checkings: false, edit: false, editableData: [], editguID: "" };
+    this.state = { guId: [], checkings: false, edit: false, editableData: [], editguID: "", status: "disable" };
     this.renderHeaders = this.renderHeaders.bind(this);
     this.getGuId = this.getGuId.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
@@ -18,32 +17,37 @@ class TableBody extends Component {
   }
 
   getGuId(e) {
-    console.log(this.props.database[0])
+    
     if (e.target.checked === true) {
-      this.state.guId.push(this.props.database[e.target.id].GuId);
-      console.log(this.props.database[e.target.id].GuId); console.log(this.props.database);
+      this.state.guId.push(this.props.database[e.target.id].GuID);
     }
     else {
-      let index = this.state.guId.indexOf(this.props.database[e.target.id].GuId);
+      let index = this.state.guId.indexOf(this.props.database[e.target.id].GuID);
       if (index >= 0) {
         this.state.guId.splice(index, 1);
       }
     }
     this.setState({ guId: this.state.guId })
-    console.log(this.state.checkings)
+      
+    if(this.state.guId.length>0){
+     this.props.changeSt(false)
+    }
+    else{
+      this.props.changeSt(true)
+    }
+    
     this.props.getSendData(this.state.guId)
+      console.log(this.state.guId)
+    
   };
 
   handleEdit(e) {
     this.setState({ edit: true });
     console.log(e.target.id);
     let editData=this.props.database[e.target.id-1];
-    let defaultVal=[];
     this.firstname = editData["Full Name"].split(" ")[0];
     this.lastname=editData["Full Name"].split(" ")[1];
-    this.setState({editableData: editData})
-    this.setState({editguID: editData.GuID})
-    console.log(this.state.editguID)
+    this.setState({editableData: editData,editguID: editData.GuID})
   }
 
   DelContact(e,guid_del){
@@ -58,19 +62,15 @@ class TableBody extends Component {
                 }
                 else {
                     alert("Error Request")
-                }
-                
+                }  
             })
-
   }
 
   closeEdit(){
     this.setState({edit: false})
-    
   }
   
   SaveEdits(putObject){
-    
      putObject = {
        "Full Name": this.refs.firstname.value +" "+ this.refs.lastname.value,
        "Company Name": this.refs.company.value,
@@ -107,7 +107,7 @@ class TableBody extends Component {
             <input className="list_input" ref="country" defaultValue={dataPlacehold["Country"]} type="text" required placeholder="Country" /> <br />
             <input className="list_input" ref="email" defaultValue={dataPlacehold["Email"]} type="email" required placeholder="Email" /> <br />
             <button className="main_buttons" onClick={this.closeEdit}>Close</button>
-            <button className="main_buttons" onClick={this.SaveEdits}>Add Contact</button>
+            <button className="main_buttons" onClick={this.SaveEdits}>Save</button>
           </form>
         </div>
       )
@@ -122,7 +122,7 @@ class TableBody extends Component {
   renderHeaders(value, key) {
     return (
       <tr key={key} className="table_row">
-        <td className="table_data"><input type="checkbox" defaultChecked={this.state.checkings} id={key} onChange={this.getGuId} /></td>
+        <td className="table_data checkbox"><input type="checkbox" defaultChecked={this.state.checkings} id={key} onChange={this.getGuId} /></td>
         <td className="table_data">{key += 1}</td>
         <td className="table_data">{value["Full Name"]}</td>
         <td className="table_data">{value["Company Name"]}</td>
@@ -131,18 +131,15 @@ class TableBody extends Component {
         <td className="table_data">{value.Email}</td>
         <td className="table_data">{this.editingRender(key)}</td>
         <td className="table_data"><button id={key} onClick={this.DelContact} className="edit_delete del">Delete</button></td>
-        
-          
       </tr>
     )
   }
+ 
   render() {
+    
     return(<tbody>
         {this.props.database.map(this.renderHeaders)}
     </tbody>)
-
-    
-
   }
 }
 export { TableBody };

@@ -5,7 +5,7 @@ import call from '../helpers/call.js'
 class AddNewContact extends Component {
     constructor(props) {
         super(props);
-        this.state = { close: this.props.addNewState, putNew: true};
+        this.state = { close: this.props.addNewState, putNew: true };
         //    this.renderAddNew = this.renderAddNew.bind(this);
         //  this.renderEditMode = this.renderEditMode.bind(this);
         this.normalMode = this.normalMode.bind(this);
@@ -24,17 +24,16 @@ class AddNewContact extends Component {
 
     closeMode() {
         this.setState({ close: false })
-        return(<p>Your Contact Added Succesfully</p>)
+        return (<p>Your Contact Added Succesfully</p>)
     }
 
     handleAdd() {
-        this.setState({ putNew: !this.state.putNew });
+        this.setState({ putNew: false });
         console.log(this.state.putNew)
     }
-  
     putNewData(added_data) {
         this.handleAdd();
-        if (this.state.putNew) {
+        if (!this.state.putNew) {
             added_data = {
                 "Full Name": this.refs.firstname.value + " " + this.refs.lastname.value,
                 "Company Name": this.refs.company.value,
@@ -47,19 +46,16 @@ class AddNewContact extends Component {
                  console.log(that)
                 if (response.error) {
                      call('api/contacts', 'GET').then(response => { response.error ? alert(response.message) : that.props.change(response) })
-                     console.log(this)
-                     that.closeMode();
+                     console.log(this)    
                 }
                 else {
                     alert("Error Request")
                 }
-            })
-            if (!this.state.close) {
-                
-                alert("error")
-            }          
+            })         
         }
     }
+
+    
 
 
     addNewMode() {
