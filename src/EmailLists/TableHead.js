@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Requests } from './Requests';
 import '../StyleSheet/Contacts.css';
+//import call from '../helpers/call.js'
 
 class TableHead extends Component {
     constructor(props) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Requests } from './Requests';
 import '../StyleSheet/Contacts.css';
+//import call from '../helpers/call.js';
 
 
 class TableBody extends Component {
@@ -23,6 +24,7 @@ class TableBody extends Component {
             console.log(this.props.database[e.target.id].EmailListId);
             console.log(this.props.database);
             console.log(this.state.getEmailListIdArr);
+            this.props.sendemails(this.state.getEmailListIdArr);
         }
         else {
             let index = this.state.getEmailListIdArr.indexOf(this.props.database[e.target.id].EmailListId);
@@ -86,9 +88,7 @@ class TableBody extends Component {
             <tr key={key} >
                 <td >{value.EmailListId}</td>
                 <td >{value.EmailListName}</td>
-
             </tr>
-
         )
     }
 
