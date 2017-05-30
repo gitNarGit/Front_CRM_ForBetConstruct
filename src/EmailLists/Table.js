@@ -10,7 +10,7 @@ import '../StyleSheet/Contacts.css';
 class Table extends Component {
     constructor(props) {
         super(props);
-        this.state = { dbMailingList: [], dbTemplate: [], templateId: [1] };
+        this.state = { dbMailingList: [], dbTemplate: [], templateId: [1], tableHead: true };
         this.renderOptions = this.renderOptions.bind(this);
         this.getTemplateListId = this.getTemplateListId.bind(this);
     }
@@ -45,9 +45,6 @@ class Table extends Component {
         )
 
     }
-
-
-
 
     render() {
         return (

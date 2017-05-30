@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Requests } from './Requests';
 import { Table } from './Table'
 
-
 class MailingLists extends Component {
 
     render() {
@@ -16,3 +15,4 @@ class MailingLists extends Component {
     }
 }
 export { MailingLists };
+

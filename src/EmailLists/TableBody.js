@@ -6,13 +6,13 @@ import '../StyleSheet/Contacts.css';
 class TableBody extends Component {
     constructor(props) {
         super(props);
-        this.state = { editing: false, getEmailListIdArr: [], checkings: false };
+        this.state = { editing: false, getEmailListIdArr: [], checkings: false, editName: [] };
         this.edit = this.edit.bind(this);
         this.save = this.save.bind(this);
         this.editMode = this.editMode.bind(this);
         this.normalMode = this.normalMode.bind(this);
-        this.renderNormalModeHead = this.renderNormalModeHead.bind(this);
-        this.renderEditModeHead = this.renderEditModeHead.bind(this);
+        this.renderNormalMode = this.renderNormalMode.bind(this);
+        this.renderEditMode = this.renderEditMode.bind(this);
         this.getEmailListId = this.getEmailListId.bind(this);
     }
 
@@ -34,60 +34,60 @@ class TableBody extends Component {
         console.log(this.state.checkings)
     };
 
-    edit() {
+    edit(e) {
         this.setState({ editing: true });
+        let mailListName = this.props.database[e.target.id].EmailListName;
+        this.state.editName[0] = mailListName;
+        console.log(this.state.editName[0]);
     };
 
     save(updateData) {
         let val = this.refs.newText.value;
         this.setState({ editing: false });
-
         console.log(val);
     };
 
     editMode() {
-
         return (
             <tbody>
-                {this.props.database.map(this.renderEditModeHead)}
+                <tr>
+                    <td ><input type="text" ref="newText" defaultValue={this.state.editName}></input></td>
+                </tr>
                 <tr>
                     <td><button onClick={this.save}>Save</button></td>
                 </tr>
             </tbody>
-
         )
     };
 
     normalMode() {
         return (
             <tbody>
-                {this.props.database.map(this.renderNormalModeHead)}
+                {this.props.database.map(this.renderNormalMode)}
             </tbody>
         )
     }
 
-    renderNormalModeHead(value, key) {
+    renderNormalMode(value, key) {
         return (
             <tr key={key} >
                 <td ><input type="checkbox" id={key} ref="checkbx" onChange={this.getEmailListId} /></td>
                 <td >{value.EmailListId}</td>
                 <td >{value.EmailListName}</td>
                 <td >
-                    <button onClick={this.edit} >Edit</button>
+                    <button id={key} onClick={this.edit} >Edit</button>
                 </td>
             </tr>
         )
     }
 
-    renderEditModeHead(value, key) {
+    renderEditMode(value, key) {
         return (
             <tr key={key} >
-                <td id={key} ></td>
                 <td >{value.EmailListId}</td>
-                <td ><textarea ref="newText" defaultValue={value.EmailListName}>{}</textarea></td>
+                <td >{value.EmailListName}</td>
 
             </tr>
-
 
         )
     }

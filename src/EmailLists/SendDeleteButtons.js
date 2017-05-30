@@ -4,6 +4,7 @@ import { Requests } from './Requests';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
 import { Table } from './Table';
+
 class Buttons extends Component {
     constructor(props) {
         super(props);
