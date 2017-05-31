@@ -51,9 +51,9 @@ class TableBody extends Component {
 
     editMode() {
         return (
-           
             <tbody>
-                 {this.props.database.map(this.renderNormalMode)}
+
+                
                 <tr className="table_row">
                     <td className="table_data"><input type="text" ref="newText" defaultValue={this.state.editName}></input></td>
                 </tr>

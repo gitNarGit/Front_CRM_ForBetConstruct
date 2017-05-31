@@ -32,8 +32,8 @@ class AddNewContact extends Component {
         console.log(this.state.putNew)
     }
     putNewData(added_data) {
-        this.handleAdd();
-        if (!this.state.putNew) {
+     
+        if (this.state.putNew) {
             added_data = {
                 "Full Name": this.refs.firstname.value + " " + this.refs.lastname.value,
                 "Company Name": this.refs.company.value,
@@ -53,6 +53,7 @@ class AddNewContact extends Component {
                 }
             })         
         }
+           
     }
 
     
@@ -60,7 +61,7 @@ class AddNewContact extends Component {
 
     addNewMode() {
         return (<div className="add_new">
-            <form action="" className="add_new_form">
+            <div action="" className="add_new_form">
                 <h3 className="add_new_header">Add New Contact</h3>
                 <input className="list_input" ref="firstname" required type="text" placeholder="First Name" /><br />
                 <input className="list_input" ref="lastname" type="text" required placeholder="Last Name" /> <br />
@@ -70,7 +71,7 @@ class AddNewContact extends Component {
                 <input className="list_input" ref="email" type="email" required placeholder="Email" /> <br />
                 <button className="main_buttons" onClick={this.closeMode}>Close</button>
                 <button className="main_buttons" onClick={this.putNewData}>Add Contact</button>
-            </form>
+            </div>
         </div>)
     }
 
