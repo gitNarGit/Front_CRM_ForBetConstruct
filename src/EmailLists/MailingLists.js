@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Requests } from './Requests';
-import { Table } from './Table'
+import { EmailListTable } from './EmailListTable'
 
 class MailingLists extends Component {
 
@@ -9,7 +9,7 @@ class MailingLists extends Component {
         return (
             <div className="wrapper">
                 <h3 className="list_head"> Mailing Lists </h3>
-                <Table></Table>
+                <EmailListTable></EmailListTable>
             </div>
         )
     }

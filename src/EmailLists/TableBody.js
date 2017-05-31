@@ -52,10 +52,10 @@ class TableBody extends Component {
     editMode() {
         return (
             <tbody>
-                <tr>
-                    <td ><input type="text" ref="newText" defaultValue={this.state.editName}></input></td>
+                <tr className="table_row">
+                    <td className="table_data"><input type="text" ref="newText" defaultValue={this.state.editName}></input></td>
                 </tr>
-                <tr>
+                <tr className="table_row">
                     <td><button onClick={this.save}>Save</button></td>
                 </tr>
             </tbody>
@@ -72,11 +72,11 @@ class TableBody extends Component {
 
     renderNormalMode(value, key) {
         return (
-            <tr key={key} >
-                <td ><input type="checkbox" id={key} ref="checkbx" onChange={this.getEmailListId} /></td>
-                <td >{value.EmailListId}</td>
-                <td >{value.EmailListName}</td>
-                <td >
+            <tr key={key} className="table_row">
+                <td className="table_data"><input type="checkbox" id={key} ref="checkbx" onChange={this.getEmailListId} /></td>
+                <td className="table_data">{value.EmailListId}</td>
+                <td className="table_data">{value.EmailListName}</td>
+                <td className="table_data">
                     <button id={key} onClick={this.edit} >Edit</button>
                 </td>
             </tr>
@@ -85,9 +85,9 @@ class TableBody extends Component {
 
     renderEditMode(value, key) {
         return (
-            <tr key={key} >
-                <td >{value.EmailListId}</td>
-                <td >{value.EmailListName}</td>
+            <tr key={key} className="table_row">
+                <td className="table_data">{value.EmailListId}</td>
+                <td className="table_data">{value.EmailListName}</td>
             </tr>
         )
     }

@@ -9,8 +9,7 @@ class Menu extends Component{
           <div className="menu">
                   <ul className="list_menu">
                       <li className="menu_item"><NavLink activeClassName="active" to='/table'>Contact List </NavLink></li>
-                      {/*<li className="menu_item"><NavLink activeClassName="active" to='/addmailinglist'>MailList </NavLink></li>
-                      <li className="menu_item"><NavLink activeClassName="active" to='/sendemails'> Send Email </NavLink></li>*/}
+                      <li className="menu_item"><NavLink activeClassName="active" to='/EmailListTable'>Mailing List </NavLink></li>
                  </ul>
           </div>
       

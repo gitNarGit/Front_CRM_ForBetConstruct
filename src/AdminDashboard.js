@@ -5,6 +5,7 @@ import Header from "./Header.js"
 import Menu from "./Menu.js";
 import MailingLists from'./MailingLists/MailingLists';
 import SendEmails from './SendEmails.js';
+import {EmailListTable} from './EmailLists/EmailListTable';
 
 
 
@@ -22,7 +23,7 @@ class AdminDashboard extends Component{
             <main role="main"  >
        <Switch>
 				      <Route path='/table' component={Table}/>
-						  {/*<Route path='/addmailinglist' component={MailingLists}/>*/}
+						  <Route path='/EmailListTable' component={EmailListTable}/>
               {/*<Route path='/sendemails' component={SendEmails}/>*/}
               <Redirect to="/table"/>
               

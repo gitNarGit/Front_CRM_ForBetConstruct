@@ -29,9 +29,10 @@ class TableHead extends Component {
 
 
             <thead>
-                <tr >
-                    <th ></th>
+                <tr>
+                    <th>Check</th>
                     {this.getHeadData().map(this.renderHead)}
+                    <th>Edit</th>
                 </tr>
             </thead>
         )

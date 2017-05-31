@@ -7,7 +7,7 @@ import { Requests } from './Requests';
 
 import '../StyleSheet/Contacts.css';
 
-class Table extends Component {
+class EmailListTable extends Component {
     constructor(props) {
         super(props);
         this.state = { dbMailingList: [], dbTemplate: [], templateId: [1], tableHead: true, sendEmails: [] };
@@ -68,7 +68,7 @@ class Table extends Component {
                     {this.state.dbTemplate.map(this.renderOptions)}
                 </select>
 
-                <table >
+                <table className="all_contacts">
                     <TableHead head={this.state.dbMailingList[0]}></TableHead>
                     <TableBody database={this.state.dbMailingList} head={this.state.dbMailingList[0]} sendemails={this.getEmailsList}></TableBody>
                 </table>
@@ -81,4 +81,4 @@ class Table extends Component {
         )
     }
 }
-export { Table };
+export { EmailListTable };
