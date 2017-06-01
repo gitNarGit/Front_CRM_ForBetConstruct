@@ -8,7 +8,7 @@ import '../StyleSheet/Contacts.css';
 class Table extends Component {
     constructor(props) {
         super(props);
-        this.state = { db: [], AddNewMode: false, sendMail: [], addnew: false, disable: true, selectAll: false, };
+        this.state = { arrayCheckes: [], db: [], AddNewMode: false, sendMail: [], addnew: false, disable: true, selectAll: false, };
         //this.putNewContacts=this.putNewContacts.bind(this);
         this.getSendMailData = this.getSendMailData.bind(this);
         this.postData = this.postData.bind(this);
@@ -16,6 +16,8 @@ class Table extends Component {
         this.putData = this.putData.bind(this);
         this.ReusableChangeState = this.ReusableChangeState.bind(this);
         this.changeSelectAll = this.changeSelectAll.bind(this);
+        this.checkBoxHide = this.checkBoxHide.bind(this);
+        this.createMailingList = this.createMailingList.bind(this);
 
     }
 
@@ -34,7 +36,7 @@ class Table extends Component {
 
     changeSelectAll() {
         this.setState({ selectAll: !this.state.selectAll })
-      
+
 
         //console.log(this.allGuID)
 
@@ -44,20 +46,23 @@ class Table extends Component {
         call('api/contacts', 'PUT', putJSON)
     }
 
+    checkBoxHide(target) {
+        this.state.arrayCheckes.push(target);
+    }
 
     closeMode() {
         this.setState({ AddNewMode: false })
     }
 
     getSendMailData(sendData) {
-    
-            this.setState({ sendMail: sendData })
-        
+
+        this.setState({ sendMail: sendData })
+
     }
 
     postData(sendData) {
-        
-            if (this.state.selectAll) {
+
+        if (this.state.selectAll) {
             this.allGuID = [];
             for (let i in this.state.db) {
                 this.allGuID.push(this.state.db[i].GuID)
@@ -65,30 +70,49 @@ class Table extends Component {
             sendData = this.allGuID
         }
         else {
-                 sendData = this.state.sendMail;
+            sendData = this.state.sendMail;
         }
-       
-        
-        call('api/sendemail?templateid=1', 'POST', sendData)
+
+
+        call('api/sendemail?templateid=1', 'POST', sendData);
+        for (let i = 0; i < this.state.arrayCheckes.length; i++) {
+            this.state.arrayCheckes[i].checked = false;
+        }
     };
+    createMailingList() {
+        let listData = {
+            "EmailListName": this.refs.listname.value,
+            "GuID": this.state.sendMail
+        };
+        let that = this;
+        call('api/emaillists', 'POST', listData).then(function (response) {
+            console.log(response)
+        })
+    }
+
+
 
     render() {
-
         return (<div>
             <h3 className="headers">All Contacts</h3>
             <AddNewContact addNewState={this.state.AddNewMode} change={this.changeState} />
             <p className="count">Number of Contacts: {this.state.db.length}</p>
             <input type="checkbox" onChange={this.changeSelectAll} className="select_all" />
             <table className="all_contacts">
-                
                 <Headers selectAll={this.changeSelectAll} headerData={this.state.db[0]}></Headers>
-                <TableBody select={this.state.selectAll} status={this.state.disable} changeSt={this.ReusableChangeState} getSendData={this.getSendMailData} put={this.putData} change={this.changeState} database={this.state.db} head={this.state.db[0]} />
+                <TableBody select={this.state.selectAll} status={this.state.disable} changeSt={this.ReusableChangeState} getSendData={this.getSendMailData} put={this.putData} change={this.changeState} database={this.state.db} checkBoxHide={this.checkBoxHide} />
             </table>
             <button className="main_buttons button_send" disabled={this.state.disable} onClick={this.postData}>SEND EMAIL</button>
-            <div className="upload">
-                <input type="file" className="upload" />
+
+            <div className="createList">
+                <label htmlFor="listcreate">Mailing List Name </label>
+                <input id="listcreate" ref="listname" className="listname" required type="text" />
+                <button className="main_buttons button_send" onClick={this.createMailingList} disabled={this.state.disable} >Create New Mailing List</button>
             </div>
-            <button className="main_buttons button_send" >Upload</button>
+            <div className="upload createList">
+                <input type="file" className="upload" />
+                <button className="main_buttons button_send" >Upload</button>
+            </div>
         </div>
         )
     }

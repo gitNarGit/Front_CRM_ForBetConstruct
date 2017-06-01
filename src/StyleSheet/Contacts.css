@@ -61,6 +61,8 @@ font-family: arial, sans-serif;
 
 .buttonSend{
     float: right;
+        clear: both;
+   
 }
 
 .add_new_header{
@@ -105,11 +107,12 @@ font-family: arial, sans-serif;
 }
 
 .edit_form{
-    background: #c56969;
+    background: rgb(169, 156, 169);
     width: 52%;
     overflow: auto;
     text-align: center;
     margin: 11% auto;
+	border-radius: 15px;
 }
 
 .edit_mode{
@@ -149,3 +152,17 @@ font-family: arial, sans-serif;
 .checkbox{
     text-align: center;
 }
+
+.createList{
+    clear: both;
+    overflow: auto;
+        float: left;
+}
+
+.listName{
+    margin: 1% 0%;
+    padding: 1% 0%;
+    font-size: 14px;
+
+}
+

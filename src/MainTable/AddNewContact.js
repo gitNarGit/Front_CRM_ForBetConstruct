@@ -54,9 +54,7 @@ class AddNewContact extends Component {
             })         
         }
            
-    }
-
-    
+    } 
 
 
     addNewMode() {

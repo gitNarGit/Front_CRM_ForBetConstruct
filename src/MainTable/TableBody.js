@@ -12,12 +12,10 @@ class TableBody extends Component {
     this.closeEdit=this.closeEdit.bind(this);
     this.SaveEdits=this.SaveEdits.bind(this);
     this.DelContact=this.DelContact.bind(this);
-    
-
   }
 
   getGuId(e) {
-    
+    this.props.checkBoxHide(e.target);
     if (e.target.checked === true) {
       this.state.guId.push(this.props.database[e.target.id].GuID);
     }
@@ -98,7 +96,7 @@ class TableBody extends Component {
     if (this.state.edit===true) {
       return (
         <div className="edit_mode">
-          <form action="" className="edit_form">
+          <div action="" className="edit_form">
             <h3 className="add_new_header">Edit {this.firstname} {this.lastname}'s Contacts</h3>
             <input className="list_input" ref="firstname" defaultValue={this.firstname} required type="text" placeholder="First Name" /><br />
             <input className="list_input" ref="lastname" defaultValue={this.lastname} required type="text" placeholder="Last Name" /><br />
@@ -108,7 +106,7 @@ class TableBody extends Component {
             <input className="list_input" ref="email" defaultValue={dataPlacehold["Email"]} type="email" required placeholder="Email" /> <br />
             <button className="main_buttons" onClick={this.closeEdit}>Close</button>
             <button className="main_buttons" onClick={this.SaveEdits}>Save</button>
-          </form>
+          </div>
         </div>
       )
     }
